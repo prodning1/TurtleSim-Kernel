@@ -2,6 +2,7 @@ package com.prodning.turtlesim.kernel.parse;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -28,12 +29,13 @@ public class EntityFileParser {
 	private static HashMap<String, Resource> resourceCache = new HashMap<String, Resource>();
 	private static HashMap<String, String> nameCache = new HashMap<String, String>();
 	private static HashMap<String, String> humanReadableCache = new HashMap<String, String>();
-	
+
+    private static File fleetFile;
+    private static File entitiesFile;
+
 	public static Fleet getFleetById(String id)
 			throws ParserConfigurationException, SAXException, IOException,
 			XPathExpressionException {
-		
-		File fleetFile = new File("resources/fleets.xml");
 		
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		Document fleetDoc;
@@ -43,7 +45,7 @@ public class EntityFileParser {
 		Fleet result = new Fleet(fleetDoc.getDocumentElement().getAttribute("name"));
 
 		NodeList nList = getNodeListByXPath(
-				"resources/fleets.xml",
+				fleetFile,
 				"/fleets/fleet[@id='" + id + "']");
 		
 		if(nList == null) {
@@ -62,7 +64,7 @@ public class EntityFileParser {
 		}
 		
 		nList = getNodeListByXPath(
-				"resources/fleets.xml",
+				fleetFile,
 				"/fleets/fleet[@id='" + id + "']/entity");
 
 		for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -102,7 +104,7 @@ public class EntityFileParser {
 			return combatEntityCache.get(id).clone();
 		} else {
 			NodeList nList = getNodeListByXPath(
-					"resources/entities.xml",
+					entitiesFile,
 					"/entities/entity[@id='" + id + "']");
 
 			CombatEntityType type;
@@ -147,7 +149,7 @@ public class EntityFileParser {
 								.getTextContent()));
 
 						NodeList rapidFireNodeList = getNodeListByXPath(
-								"resources/entities.xml",
+								entitiesFile,
 								"/entities/entity[@id='" + id
 										+ "']/rapid_fire_list/rapid_fire");
 
@@ -196,7 +198,7 @@ public class EntityFileParser {
 			} else {
 				//otherwise construct a new resource
 				
-				NodeList nList = getNodeListByXPath("resources/entities.xml", "/entities/entity[@id='" + id + "']");
+				NodeList nList = getNodeListByXPath(entitiesFile, "/entities/entity[@id='" + id + "']");
 				
 				int metal = -1, crystal = -1, deuterium = -1;
 
@@ -256,7 +258,7 @@ public class EntityFileParser {
 		} else {
 			try {
 				NodeList nList = getNodeListByXPath(
-						"resources/entities.xml",
+						entitiesFile,
 						"/entities/entity[@id='" + id + "']");
 
 				String name = null;
@@ -302,7 +304,7 @@ public class EntityFileParser {
 		} else {
 			try {
 				NodeList nList = getNodeListByXPath(
-						"resources/entities.xml",
+						entitiesFile,
 						"/entities/entity[@id='" + id + "']");
 
 				String name = null;
@@ -343,17 +345,16 @@ public class EntityFileParser {
 		}
 	}
 	
-	private static NodeList getNodeListByXPath(String resourcePath, String xPathQuery) {
-		File entitiesFile = new File(resourcePath);
+	private static NodeList getNodeListByXPath(File file, String xPathQuery) {
 
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
 		Document resourceEntitiesDoc;
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			resourceEntitiesDoc = dBuilder.parse(entitiesFile);
+			resourceEntitiesDoc = dBuilder.parse(file);
 		} catch (Exception e) {
-			System.out.println("Error parsing " + resourcePath);
+			System.out.println("Error parsing " + file.getPath());
 			return null;
 		}
 		
@@ -367,4 +368,10 @@ public class EntityFileParser {
 			return null;
 		}
 	}
+
+    public static void setFleetFile(File _fleetFile) {
+        fleetFile = _fleetFile;
+    } public static void setEntitiesFile(File _entitiesFile) {
+        entitiesFile = _entitiesFile;
+    }
 }
