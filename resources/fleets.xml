@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<fleets>
+	<fleet id="F0001" name="attack" owner="">
+		<entity id="1001" count="100" />
+		<entity id="2001" count="100" />
+		<entity id="2002" count="50" />
+		<entity id="2003" count="30" />
+		<entity id="2004" count="15" />
+	</fleet>
+	<fleet id="F0002" name="defend" owner="">
+		<entity id="1001" count="100" />
+		<entity id="2001" count="100" />
+		<entity id="2002" count="50" />
+		<entity id="2003" count="30" />
+		<entity id="2004" count="15" />
+
+		<entity id="0001" count="200" />
+		<entity id="0002" count="150" /> 
+		<entity id="0004" count="15" />
+		<entity id="0005" count="50" />
+		<entity id="0006" count="15" />
+		<entity id="0007" count="1" />
+		<entity id="0008" count="1" />
+	</fleet>
+	<fleet id="F0003" name="attack" owner="jothcra">
+		<entity id="1001" count="50" />
+	</fleet>
+	<fleet id="F0004" name="defend" owner="phider">
+		<entity id="0002" count="1" />
+	</fleet>
+</fleets>

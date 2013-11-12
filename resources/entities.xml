@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+
+<!-- XML configuration for the TurtleSim ogame simulator java package by Philip Rodning -->
+<!-- Data pulled from the OGame wiki at ogame.wikia.com -->
+<!-- Last updated by Philip Rodning on 2013/11/3 -->
+
+<!-- on ids... txxx
+     t is the type:
+     	0	defense
+     	1	civilian ships
+     	2	military ships
+     xxx is a unique (to that type) identifier  -->
+
+<entities>
+
+	<!-- BEGIN DEFENSE -->
+	
+	<entity id="0001">
+		<name>ROCKET_LAUNCHER</name>
+		<humanreadable>Rocket Launcher</humanreadable>
+		<abbr>RL</abbr>
+
+		<structural_integrity>2000</structural_integrity>
+		<base_shields>20</base_shields>
+		<base_weapon>80</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>2000</metal>
+		<crystal></crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0002">
+		<name>LIGHT_LASER</name>
+		<humanreadable>Light Laser</humanreadable>
+		<abbr>LL</abbr>
+
+		<structural_integrity>2000</structural_integrity>
+		<base_shields>25</base_shields>
+		<base_weapon>100</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>1500</metal>
+		<crystal>500</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0003">
+		<name>HEAVY_LASER</name>
+		<humanreadable>Heavy Laser</humanreadable>
+		<abbr>HL</abbr>
+
+		<structural_integrity>8000</structural_integrity>
+		<base_shields>100</base_shields>
+		<base_weapon>250</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>6000</metal>
+		<crystal>2000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0004">
+		<name>GAUSS_CANNON</name>
+		<humanreadable>Gauss Cannon</humanreadable>
+		<abbr>GC</abbr>
+
+		<structural_integrity>35000</structural_integrity>
+		<base_shields>200</base_shields>
+		<base_weapon>1100</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>20000</metal>
+		<crystal>15000</crystal>
+		<deuterium>2000</deuterium>
+	</entity>
+	<entity id="0005">
+		<name>ION_CANNON</name>
+		<humanreadable>Ion Cannon</humanreadable>
+		<abbr>IC</abbr>
+
+		<structural_integrity>8000</structural_integrity>
+		<base_shields>500</base_shields>
+		<base_weapon>150</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>2000</metal>
+		<crystal>6000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0006">
+		<name>PLASMA_TURRET</name>
+		<humanreadable>Plasma Turret</humanreadable>
+		<abbr>PT</abbr>
+
+		<structural_integrity>100000</structural_integrity>
+		<base_shields>300</base_shields>
+		<base_weapon>3000</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>50000</metal>
+		<crystal>50000</crystal>
+		<deuterium>30000</deuterium>
+	</entity>
+	<entity id="0007">
+		<name>SMALL_SHIELD_DOME</name>
+		<humanreadable>Small Shield Dome</humanreadable>
+		<abbr>SSM</abbr>
+
+		<structural_integrity>20000</structural_integrity>
+		<base_shields>2000</base_shields>
+		<base_weapon>1</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>10000</metal>
+		<crystal>10000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0008">
+		<name>LARGE_SHIELD_DOME</name>
+		<humanreadable>Large Shield Dome</humanreadable>
+		<abbr>LSM</abbr>
+
+		<structural_integrity>100000</structural_integrity>
+		<base_shields>10000</base_shields>
+		<base_weapon>1</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal>50000</metal>
+		<crystal>50000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="0009">
+		<name>ANTI_BALLISTIC_MISSILE</name>
+		<humanreadable>Anti-Ballistic Missile</humanreadable>
+		<abbr>ABM</abbr>
+		
+		<metal>8000</metal>
+		<crystal></crystal>
+		<deuterium>2000</deuterium>
+	</entity>
+	<entity id="0010">
+		<name>INTERPLANETARY_MISSILE</name>
+		<humanreadable>Interplanetary Missile</humanreadable>
+		<abbr>IPM</abbr>
+		
+		<metal>12500</metal>
+		<crystal>2500</crystal>
+		<deuterium>10000</deuterium>
+	</entity>
+	
+	
+	<!-- BEGIN CIVILIAN SHIPS -->
+
+	<entity id="1001">
+		<name>SMALL_CARGO</name>
+		<humanreadable>Small Cargo Ship</humanreadable>
+		<abbr>SC</abbr>
+
+		<structural_integrity>4000</structural_integrity>
+		<base_shields>10</base_shields>
+		<base_weapon>5</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>2000</metal>
+		<crystal>2000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="1002">
+		<name>LARGE_CARGO</name>
+		<humanreadable>Large Cargo Ship</humanreadable>
+		<abbr>LC</abbr>
+
+		<structural_integrity>12000</structural_integrity>
+		<base_shields>25</base_shields>
+		<base_weapon>5</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>6000</metal>
+		<crystal>6000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="1003">
+		<name>COLONY_SHIP</name>
+		<humanreadable>Colony Ship</humanreadable>
+		<abbr>CS</abbr>
+
+		<structural_integrity>30000</structural_integrity>
+		<base_shields>0.01</base_shields>
+		<base_weapon>0.01</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>10000</metal>
+		<crystal>20000</crystal>
+		<deuterium>10000</deuterium>
+	</entity>
+	<entity id="1004">
+		<name>RECYCLER</name>
+		<humanreadable>Recycler</humanreadable>
+		<abbr>RC</abbr>
+
+		<structural_integrity>16000</structural_integrity>
+		<base_shields>10</base_shields>
+		<base_weapon>1</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>10000</metal>
+		<crystal>6000</crystal>
+		<deuterium>2000</deuterium>
+	</entity>
+	<entity id="1005">
+		<name>ESPIONAGE_PROBE</name>
+		<humanreadable>Espionage Probe</humanreadable>
+		<abbr>ESP</abbr>
+
+		<structural_integrity>1000</structural_integrity>
+		<base_shields>0.01</base_shields>
+		<base_weapon>0.01</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal></metal>
+		<crystal>1000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="1006">
+		<name>SOLAR_SATELLITE</name>
+		<humanreadable>Solar Satellite</humanreadable>
+		<abbr>SAT</abbr>
+
+		<structural_integrity>2000</structural_integrity>
+		<base_shields>1</base_shields>
+		<base_weapon>1</base_weapon>
+		<rapid_fire_list>
+		</rapid_fire_list>
+
+		<metal></metal>
+		<crystal>2000</crystal>
+		<deuterium>500</deuterium>
+	</entity>
+	
+	
+	<!--  BEGIN MILITARY SHIPS -->
+	
+	<entity id="2001">
+		<name>LIGHT_FIGHTER</name>
+		<humanreadable>Light Fighter</humanreadable>
+		<abbr>LF</abbr>
+
+		<structural_integrity>4000</structural_integrity>
+		<base_shields>10</base_shields>
+		<base_weapon>50</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>3000</metal>
+		<crystal>1000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="2002">
+		<name>HEAVY_FIGHTER</name>
+		<humanreadable>Heavy Fighter</humanreadable>
+		<abbr>HF</abbr>
+
+		<structural_integrity>10000</structural_integrity>
+		<base_shields>25</base_shields>
+		<base_weapon>150</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+			<rapid_fire id="1001" value="3" />
+		</rapid_fire_list>
+
+		<metal>6000</metal>
+		<crystal>4000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="2003">
+		<name>CRUISER</name>
+		<humanreadable>Cruiser</humanreadable>
+		<abbr>CR</abbr>
+
+		<structural_integrity>27000</structural_integrity>
+		<base_shields>50</base_shields>
+		<base_weapon>400</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+			<rapid_fire id="2001" value="6" />
+			<rapid_fire id="0001" value="10" />
+		</rapid_fire_list>
+
+		<metal>20000</metal>
+		<crystal>7000</crystal>
+		<deuterium>2000</deuterium>
+	</entity>
+	<entity id="2004">
+		<name>BATTLESHIP</name>
+		<humanreadable>Battleship</humanreadable>
+		<abbr>BS</abbr>
+
+		<structural_integrity>60000</structural_integrity>
+		<base_shields>200</base_shields>
+		<base_weapon>1000</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+		</rapid_fire_list>
+
+		<metal>45000</metal>
+		<crystal>15000</crystal>
+		<deuterium></deuterium>
+	</entity>
+	<entity id="2005">
+		<name>BATTLECRUISER</name>
+		<humanreadable>Battlecruiser</humanreadable>
+		<abbr>BC</abbr>
+
+		<structural_integrity>70000</structural_integrity>
+		<base_shields>400</base_shields>
+		<base_weapon>700</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+			<rapid_fire id="1001" value="3" />
+			<rapid_fire id="1002" value="3" />
+			<rapid_fire id="2002" value="4" />
+			<rapid_fire id="2003" value="4" />
+			<rapid_fire id="2004" value="7" />
+		</rapid_fire_list>
+
+		<metal>30000</metal>
+		<crystal>40000</crystal>
+		<deuterium>15000</deuterium>
+	</entity>
+	<entity id="2006">
+		<name>BOMBER</name>
+		<humanreadable>Bomber</humanreadable>
+		<abbr>BM</abbr>
+
+		<structural_integrity>75000</structural_integrity>
+		<base_shields>500</base_shields>
+		<base_weapon>1000</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+			<rapid_fire id="0001" value="20" />
+			<rapid_fire id="0002" value="20" />
+			<rapid_fire id="0003" value="10" />
+			<rapid_fire id="0005" value="10" />
+		</rapid_fire_list>
+
+		<metal>50000</metal>
+		<crystal>25000</crystal>
+		<deuterium>15000</deuterium>
+	</entity>
+	<entity id="2007">
+		<name>DESTROYER</name>
+		<humanreadable>Destroyer</humanreadable>
+		<abbr>DES</abbr>
+
+		<structural_integrity>110000</structural_integrity>
+		<base_shields>500</base_shields>
+		<base_weapon>2000</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="5" />
+			<rapid_fire id="1006" value="5" />
+			<rapid_fire id="2005" value="2" />
+			<rapid_fire id="0002" value="10" />
+		</rapid_fire_list>
+
+		<metal>60000</metal>
+		<crystal>50000</crystal>
+		<deuterium>15000</deuterium>
+	</entity>
+	<entity id="2008">
+		<name>DEATHSTAR</name>
+		<humanreadable>Deathstar</humanreadable>
+		<abbr>RIP</abbr>
+
+		<structural_integrity>9000000</structural_integrity>
+		<base_shields>50000</base_shields>
+		<base_weapon>200000</base_weapon>
+		<rapid_fire_list>
+			<rapid_fire id="1005" value="1250" />
+			<rapid_fire id="1006" value="1250" />
+			<rapid_fire id="1001" value="250" />
+			<rapid_fire id="1002" value="250" />
+			<rapid_fire id="2001" value="200" />
+			<rapid_fire id="2002" value="100" />
+			<rapid_fire id="2003" value="33" />
+			<rapid_fire id="2004" value="30" />
+			<rapid_fire id="1003" value="250" />
+			<rapid_fire id="1004" value="250" />
+			<rapid_fire id="2006" value="25" />
+			<rapid_fire id="2007" value="5" />
+			<rapid_fire id="2005" value="15" />
+			<rapid_fire id="0001" value="200" />
+			<rapid_fire id="0002" value="200" />
+			<rapid_fire id="0003" value="100" />
+			<rapid_fire id="0005" value="100" />
+			<rapid_fire id="0004" value="50" />
+		</rapid_fire_list>
+
+		<metal>5000000</metal>
+		<crystal>4000000</crystal>
+		<deuterium>1000000</deuterium>
+	</entity>
+
+</entities>
