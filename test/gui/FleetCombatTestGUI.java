@@ -25,6 +25,9 @@ import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit;
 import com.prodning.turtlesim.kernel.combat.data.SimulationResult;
 import com.prodning.turtlesim.kernel.combat.data.TechLevels;
 import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit.CombatGroup;
+import com.prodning.turtlesim.kernel.exception.TS_DuplicateIDException;
+import com.prodning.turtlesim.kernel.exception.TS_GenericParseException;
+import com.prodning.turtlesim.kernel.exception.TS_IDNotFoundException;
 import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 
 public class FleetCombatTestGUI {
@@ -132,7 +135,7 @@ public class FleetCombatTestGUI {
 //		jf.setVisible(true);
 //	}
 
-	public static String getResults(String fleet1s, String fleet2s) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
+	public static String getResults(String fleet1s, String fleet2s) throws ParserConfigurationException, SAXException, IOException, TS_GenericParseException, TS_DuplicateIDException, TS_IDNotFoundException {
 		CombatSettings.setDefenseToDebris(false);
 		CombatSettings.setShipDebrisRatio(0.3);
 		CombatSettings.setDefenseDebrisRatio(0.3);

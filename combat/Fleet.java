@@ -1,5 +1,7 @@
 package com.prodning.turtlesim.kernel.combat;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +13,8 @@ import com.prodning.turtlesim.kernel.parse.EntityFileParser;
 public class Fleet extends ArrayList<CombatEntity> {
 	private int numberOfShips = 0;
 	private String id;
-	
+
+    public static final String TAG = "TurtleSim-Kernel_Fleet";
 	
 	public Fleet(String id) {
 		this.id = id;
@@ -42,7 +45,12 @@ public class Fleet extends ArrayList<CombatEntity> {
 	public String toString() {
 		String result = "Fleet: " + id + "\nTotal ships: " + Integer.toString(this.size()) + "\n";
 		for(CombatEntity entity : this) {
-			result = result + String.format("%4d %20s ", entity.getUniqueID(), EntityFileParser.getNameById(entity.getEntityID())) + entity.getHull() + "\t" + String.format("%1$,.2f",entity.getHullPercentage()*100) + "\t" + entity.getShield() + "\t" + entity.getEffectiveWeapon() + "\n";
+            try {
+			    result = result + String.format("%4d %20s ", entity.getUniqueID(), EntityFileParser.getNameById(entity.getEntityID())) + entity.getHull() + "\t" + String.format("%1$,.2f",entity.getHullPercentage()*100) + "\t" + entity.getShield() + "\t" + entity.getEffectiveWeapon() + "\n";
+            } catch (Exception e) {
+                Log.w(TAG, e.getMessage());
+                result = result + "ERROR: CHECK LOG\n";
+            }
 		}
 		
 		return result;
@@ -74,7 +82,12 @@ public class Fleet extends ArrayList<CombatEntity> {
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
 		
 		for(String s : composition.keySet()) {
-			result.put(EntityFileParser.getNameById(s), composition.get(s));
+            try {
+			    result.put(EntityFileParser.getNameById(s), composition.get(s));
+            } catch (Exception e) {
+                result.put(s, composition.get(s));
+                Log.w(TAG, e.getMessage());
+            }
 		}
 		
 		return result;

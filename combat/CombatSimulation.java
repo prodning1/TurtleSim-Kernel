@@ -17,7 +17,7 @@ import com.prodning.turtlesim.kernel.combat.data.FleetCombatUnit.CombatGroup;
 import com.prodning.turtlesim.kernel.combat.data.MacroCombatResult.ResultType;
 
 public class CombatSimulation {
-	static int verbosity = 2;
+	static int verbosity = 0;
 	
 	public static SimulationResult SimulateFleetCombat(List<FleetCombatUnit> fleetCombatUnits, int numberOfSimulations) {
 		SimulationResult result = new SimulationResult();
@@ -102,12 +102,6 @@ public class CombatSimulation {
 			for (FleetCombatUnit fcu : fleetCombatUnits) {
 				for (CombatEntity attackingEntity : fcu.getFleet()) {
 					Boolean rapidFireSuccess;
-
-					if (attackingEntity.getType() == CombatEntityType.DEFENSE) {
-						System.out.println("Ignoring defense object "
-								+ attackingEntity.getEntityID()
-								+ " in attacking fleet.");
-					}
 
 					do {
 						CombatEntity defendingEntity;

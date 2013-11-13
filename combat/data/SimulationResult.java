@@ -1,5 +1,7 @@
 package com.prodning.turtlesim.kernel.combat.data;
 
+import android.util.Log;
+
 import java.util.HashMap;
 
 import com.prodning.turtlesim.kernel.combat.CombatEntity;
@@ -21,6 +23,8 @@ public class SimulationResult {
 	private double draws = 0;
 	private double roundsSum = 0;
 
+    public static final String TAG = "TurtleSim-Kernel_SimulationResult";
+
 	public void addCombatResult(MacroCombatResult macroCombatResult) {
 		numberOfSimulations++;
 		for (FleetCombatUnit fcu : macroCombatResult.getFleetCombatUnits()) {
@@ -31,24 +35,29 @@ public class SimulationResult {
 
 			// Get attacker and defender resource losses
 			for (CombatEntity entity : fcu.getLosses()) {
-				fcuSimResult.getTotalLosses().addThis(
-						EntityFileParser.getResourceById(entity.getEntityID()));
+                try {
+				    fcuSimResult.getTotalLosses().addThis(EntityFileParser.getResourceById(entity.getEntityID()));
+                } catch (Exception e) {
+                    Log.w(TAG, e.getMessage());
+                }
 			}
 
 			// Get attacker and defender debris field contributions
 			for (CombatEntity entity : fcu.getLosses()) {
 				if (entity.getType() == CombatEntityType.SHIP || CombatSettings.getDefenseToDebris() == true) {
 					Resource debrisResource = new Resource(0,0,0);
-					
-					if (entity.getType() == CombatEntityType.SHIP)
-						debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getShipDebrisRatio());
-					else if (entity.getType() == CombatEntityType.DEFENSE)
-						debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getDefenseDebrisRatio());
-					else {
-						// TODO error checking
-						System.out.println("Error in debris field calculation");
-						debrisResource = new Resource(-100000000, -100000000, -100000000);
-					}
+
+                    try {
+                        if (entity.getType() == CombatEntityType.SHIP)
+                            debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getShipDebrisRatio());
+                        else if (entity.getType() == CombatEntityType.DEFENSE)
+                            debrisResource = EntityFileParser.getResourceById(entity.getEntityID()).scalar(CombatSettings.getDefenseDebrisRatio());
+                        else {
+                            Log.e(TAG, "Error in CombatEntityType selection. Object is not a SHIP or a DEFENSE (null pointer?)");
+                        }
+                    } catch (Exception e) {
+                        Log.w(TAG, e.getMessage() + "; contribution to total for this entity omitted.");
+                    }
 
 					// no deut in debris field
 					debrisResource.setDeuterium(0);
