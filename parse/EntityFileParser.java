@@ -2,6 +2,7 @@ package com.prodning.turtlesim.kernel.parse;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -35,20 +36,38 @@ public class EntityFileParser {
     private static File fleetFile;
     private static File entitiesFile;
 
+    public static ArrayList<String> getListOfFleetIds() throws TS_GenericParseException {
+        ArrayList<String> result = new ArrayList<String>();
+
+        NodeList nList = getNodeListByXPath(fleetFile, "/fleets/fleet");
+
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+
+                result.add(eElement.getAttribute("id"));
+            }
+        }
+
+        return result;
+    }
+
     public static Fleet getFleetById(String id)
             throws ParserConfigurationException, SAXException, IOException,
-            TS_GenericParseException, TS_DuplicateIDException, TS_IDNotFoundException {
+                TS_GenericParseException, TS_DuplicateIDException, TS_IDNotFoundException {
 
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        Document fleetDoc;
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        fleetDoc = dBuilder.parse(fleetFile);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            Document fleetDoc;
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            fleetDoc = dBuilder.parse(fleetFile);
 
-        Fleet result = new Fleet(fleetDoc.getDocumentElement().getAttribute("name"));
+            Fleet result = new Fleet(fleetDoc.getDocumentElement().getAttribute("name"));
 
-        NodeList nList = getNodeListByXPath(
-                fleetFile,
-                "/fleets/fleet[@id='" + id + "']");
+            NodeList nList = getNodeListByXPath(
+                    fleetFile,
+                    "/fleets/fleet[@id='" + id + "']");
 
         if (nList == null) {
             throw new TS_GenericParseException("Error parsing fleet.");
